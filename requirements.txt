@@ -1,5 +1,5 @@
 jax==0.4.10
-jaxlib==0.4.10+cuda11.cudnn86
+jaxlib==0.4.10
 ml-dtypes==0.1.0
 numpy==1.24.3
 opt-einsum==3.3.0
