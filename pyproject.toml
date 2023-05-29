@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pcax"
+version = "0.1.0"
+description = "Minimal Principal Component Analysis (PCA) implementation using JAX."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    {name = "Albert Alonso", email = "alonfnt@pm.me"},
+]
+license = {file = "LICENSE"}
+keywords = ["jax", "pca", "machine-learning"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/alonfnt/pcax"
+"Documentation" = "https://github.com/alonfnt/pcax"
+"Source" = "https://github.com/alonfnt/pcax"
+"Bug Tracker" = "https://github.com/alonfnt/pcax/issues"
