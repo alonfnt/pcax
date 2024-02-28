@@ -1,5 +1,4 @@
-# pcax
-Minimal Principal Component Analsys (PCA) implementation using jax.
+# PCAx: Minimal Principal Component Analysis in Jax.
 
 The aim of this project is to provide a JAX-based PCA implementation, eliminating the need for unnecessary data transfer to CPU or conversions to Numpy. This can provide performance benefits when working with large datasets or in GPU-intensive workflow
 
