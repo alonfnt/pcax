@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools", "wheel", "jax"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "pcax"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Minimal Principal Component Analysis (PCA) implementation using JAX."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -22,6 +22,10 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
 ]
+dependencies = ["jax",]
+
+[tool.setuptools.dynamic]
+version = {attr = "pcax.__version__"}
 
 [project.urls]
 "Homepage" = "https://github.com/alonfnt/pcax"
