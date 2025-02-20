@@ -1,7 +1,6 @@
 # pcax
-
-**PCAx** is a minimal Principal Component Analysis (PCA) written in Jax.
-The aim of this project is to provide a JAX-based PCA implementation, eliminating the need for unnecessary data transfer to CPU or conversions to Numpy. This can provide performance benefits when working with large datasets or in GPU-intensive workflow
+**PCAx** is a lightweight, differentiable PCA implementation in JAX, designed for seamless GPU acceleration.
+It eliminates unnecessary CPU transfers and conversions, optimizing performance for large datasets and GPU-heavy workflows.
 
 ## Usage
 ```python
@@ -30,6 +29,6 @@ If you use `pcax` in your research and need to reference it, please cite it as f
   author = {Alonso, Albert},
   title = {pcax: Minimal Principal Component Analysis (PCA) Implementation in JAX},
   url = {https://github.com/alonfnt/pcax},
-  version = {0.0.1}
+  version = {0.1.0}
 }
 ```
