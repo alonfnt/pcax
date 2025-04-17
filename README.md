@@ -2,7 +2,7 @@
   <img src="https://github.com/user-attachments/assets/4f48d642-ca12-42c4-91a3-32f2ef464b3a" width="640" />
 </p>
 
-[![tests](https://github.com/alonfnt/bayex/actions/workflows/tests.yml/badge.svg)](https://github.com/alonfnt/pcax/actions/workflows/tests.yml)
+[![tests](https://github.com/alonfnt/bayex/actions/workflows/tests.yml/badge.svg)](https://github.com/alonfnt/pcax/actions/workflows/pytest.yml)
 [![PyPI](https://img.shields.io/pypi/v/bayex.svg)](https://pypi.org/project/pcax/)
 
 `pcax` is a minimal PCA implementation in JAX that’s both GPU/TPU/CPU‑native and fully differentiable.
