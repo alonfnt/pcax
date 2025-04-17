@@ -1,13 +1,11 @@
 from functools import partial
-from dataclasses import dataclass
+from typing import NamedTuple
 
 import jax
 import jax.numpy as jnp
 
 
-@jax.tree_util.register_dataclass
-@dataclass(frozen=True)
-class PCAState:
+class PCAState(NamedTuple):
     """Stores the state of a fitted PCA model.
 
     Attributes:
