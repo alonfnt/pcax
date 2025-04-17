@@ -7,7 +7,6 @@ name = "pcax"
 dynamic = ["version"]
 description = "Minimal Principal Component Analysis (PCA) implementation using JAX."
 readme = "README.md"
-requires-python = ">=3.9"
 authors = [
     {name = "Albert Alonso", email = "alonfnt@pm.me"},
 ]
@@ -18,9 +17,6 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
 ]
 dependencies = ["jax",]
 
