@@ -53,6 +53,17 @@ def test_jit(solver):
     x = jax.random.normal(KEY, (100, 10))
     jax.jit(fit, static_argnames=("n_components", "solver"))(x, 3, solver=solver)
 
+
+@pytest.mark.parametrize("solver, rtol", [("full", 1e-4), ("randomized", 1e-2)])
+def test_matches_sklearn(solver, rtol):
+    from sklearn.decomposition import PCA
+    x = jax.random.normal(KEY, (100, 10))
+    state = fit(x, 3, solver=solver)
+    sk = PCA(3).fit(x)
+    assert jnp.allclose(state.explained_variance, sk.explained_variance_, rtol=rtol)
+    assert jnp.allclose(state.explained_variance_ratio, sk.explained_variance_ratio_, rtol=rtol)
+
+
 @pytest.mark.parametrize("solver", ["full", "randomized"])
 def test_sign_convention(solver):
     x = jax.random.normal(KEY, (100, 10))

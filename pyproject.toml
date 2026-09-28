@@ -20,6 +20,9 @@ classifiers = [
 ]
 dependencies = ["jax",]
 
+[project.optional-dependencies]
+dev = ["pytest", "scikit-learn"]
+
 [tool.setuptools.dynamic]
 version = {attr = "pcax.__version__"}
 

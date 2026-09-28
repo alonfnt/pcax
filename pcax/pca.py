@@ -23,6 +23,7 @@ class PCAState(NamedTuple):
     components: jax.Array
     means: jax.Array
     explained_variance: jax.Array
+    explained_variance_ratio: jax.Array
 
 
 def transform(state: PCAState, x: jax.Array) -> jax.Array:
@@ -100,10 +101,13 @@ def _fit_full(x: jax.Array, n_components: int) -> PCAState:
 
     # Compute the explained variance
     explained_variance = (S[:n_components] ** 2) / (n_samples - 1)
+    total_var = jnp.sum(x**2) / (n_samples - 1)
+    explained_variance_ratio = explained_variance / total_var
 
     # Return the transformation matrix
     A = _flip_signs(Vt[:n_components])
-    return PCAState(components=A, means=means, explained_variance=explained_variance)
+    return PCAState(components=A, means=means, explained_variance=explained_variance,
+                    explained_variance_ratio=explained_variance_ratio)
 
 
 def _fit_randomized(
@@ -134,5 +138,8 @@ def _fit_randomized(
     _, S, Vt = jax.scipy.linalg.svd(B, full_matrices=False)
 
     explained_variance = (S[:n_components] ** 2) / (n_samples - 1)
+    total_var = jnp.sum(x**2) / (n_samples - 1)
+    explained_variance_ratio = explained_variance / total_var
     A = _flip_signs(Vt[:n_components])
-    return PCAState(components=A, means=means, explained_variance=explained_variance)
+    return PCAState(components=A, means=means, explained_variance=explained_variance,
+                    explained_variance_ratio=explained_variance_ratio)
