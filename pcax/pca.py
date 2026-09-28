@@ -113,7 +113,7 @@ def _fit_randomized(
     x = x - means
 
     # Generate n_features normal vectors of the given size
-    size = jnp.minimum(2 * n_components, n_features)
+    size = min(2 * n_components, n_features)
     Q = jax.random.normal(rng, shape=(n_features, size))
 
     def step_fn(q, _):
