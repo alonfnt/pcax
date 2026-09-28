@@ -5,6 +5,12 @@ import jax
 import jax.numpy as jnp
 
 
+def _flip_signs(Vt: jax.Array) -> jax.Array:
+    idx = jnp.argmax(jnp.abs(Vt), axis=1)
+    signs = jnp.sign(Vt[jnp.arange(Vt.shape[0]), idx])
+    return Vt * signs[:, None]
+
+
 class PCAState(NamedTuple):
     """Stores the state of a fitted PCA model.
 
@@ -99,7 +105,7 @@ def _fit_full(x: jax.Array, n_components: int) -> PCAState:
     explained_variance_ratio = explained_variance / total_var
 
     # Return the transformation matrix
-    A = Vt[:n_components]
+    A = _flip_signs(Vt[:n_components])
     return PCAState(components=A, means=means, explained_variance=explained_variance,
                     explained_variance_ratio=explained_variance_ratio)
 
@@ -134,6 +140,6 @@ def _fit_randomized(
     explained_variance = (S[:n_components] ** 2) / (n_samples - 1)
     total_var = jnp.sum(x**2) / (n_samples - 1)
     explained_variance_ratio = explained_variance / total_var
-    A = Vt[:n_components]
+    A = _flip_signs(Vt[:n_components])
     return PCAState(components=A, means=means, explained_variance=explained_variance,
                     explained_variance_ratio=explained_variance_ratio)
