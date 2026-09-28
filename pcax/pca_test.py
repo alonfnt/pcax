@@ -47,3 +47,8 @@ def test_reconstruction(n_entries, n_components, solver):
     x_recovered = recover(state, x_pca)
     assert x_recovered.shape == x.shape
     assert jnp.allclose(x, x_recovered, atol=1e-1)
+
+@pytest.mark.parametrize("solver", ["full", "randomized"])
+def test_jit(solver):
+    x = jax.random.normal(KEY, (100, 10))
+    jax.jit(fit, static_argnames=("n_components", "solver"))(x, 3, solver=solver)
