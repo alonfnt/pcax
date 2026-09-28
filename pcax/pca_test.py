@@ -52,3 +52,9 @@ def test_reconstruction(n_entries, n_components, solver):
 def test_jit(solver):
     x = jax.random.normal(KEY, (100, 10))
     jax.jit(fit, static_argnames=("n_components", "solver"))(x, 3, solver=solver)
+
+@pytest.mark.parametrize("solver", ["full", "randomized"])
+def test_sign_convention(solver):
+    x = jax.random.normal(KEY, (100, 10))
+    c = fit(x, 3, solver=solver).components
+    assert jnp.all(c[jnp.arange(3), jnp.argmax(jnp.abs(c), axis=1)] > 0)
